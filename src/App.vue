@@ -1,4 +1,5 @@
 <template>
+<Todo title="My TodoApp"></Todo>
 </template>
 
 <script>
