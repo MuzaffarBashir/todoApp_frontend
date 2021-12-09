@@ -1,12 +1,14 @@
 import { shallowMount } from '@vue/test-utils'
-import HelloWorld from '@/components/HelloWorld.vue'
+import Todo from '@/components/Todo.vue'
 
-describe('HelloWorld.vue', () => {
-  it('renders props.msg when passed', () => {
-    const msg = 'new message'
-    const wrapper = shallowMount(HelloWorld, {
-      props: { msg }
-    })
-    expect(wrapper.text()).toMatch(msg)
+//Acceptance Case
+it('allows for adding  todo in list', async () => {
+  const wrapper = shallowMount(Todo, {
+    propsData: {
+      title: 'My TOdoApp'
+    }
   })
+  wrapper.find('[data-testid="todo-input"]').setValue('buy some milk')
+  await wrapper.find('[data-testid="todo-submit"]').trigger('click')
+  expect(wrapper.find('[data-testid="todos"]').text()).toContain('buy some milk')
 })

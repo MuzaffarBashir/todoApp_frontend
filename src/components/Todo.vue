@@ -4,6 +4,7 @@
 
 <script>
 export default {
+    name: 'Todo'
 
 }
 </script>
@@ -11,3 +12,6 @@ export default {
 <style>
 
 </style>
+
+
+https://github.com/MuzaffarBashir/todoApp_frontend.git
