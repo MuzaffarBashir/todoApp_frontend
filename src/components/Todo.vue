@@ -1,6 +1,7 @@
 <template>
   <div>
       <h1>{{title}}</h1>
+      <input type="text" data-testid="todo-input" v-model="Description">
   </div>
 </template>
 
@@ -8,13 +9,16 @@
 export default {
     name: 'Todo',
      props: {
-
-    title: {
-      type: String,
-      required: true
+         title: {
+             type: String,
+             required: true
+             }
+        },
+    data(){
+        return{
+            Description:''
+        }
     }
-  },
-
 }
 </script>
 
