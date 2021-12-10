@@ -2,7 +2,10 @@
   <div>
       <h1>{{title}}</h1>
       <input type="text" data-testid="todo-input" v-model="Description" placeholder="write Description here">
-      <button type="submit" data-testid="todo-btn" >Add Todo</button>        
+      <button type="submit" data-testid="todo-btn" @click.prevent="addTodo()">Add Todo</button>
+      <div data-testid="todo">
+        {{todo}}
+        </div>        
   </div>
 </template>
 
@@ -18,9 +21,14 @@ export default {
     data(){
         return{
             Description:'',
-            todos:''
+            todo:''
         }
-    }
+    },
+    methods: {
+        addTodo(){
+            this.todo =  this.Description
+        }
+    },
 }
 </script>
 
