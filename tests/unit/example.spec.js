@@ -13,13 +13,24 @@ it('allows for adding  todo in list', async () => {
   await wrapper.find('[data-testid="todo-submit"]').trigger('click')
   expect(wrapper.find('[data-testid="todos"]').text()).toContain('buy some milk')
 })
-it('Displays the second title when passed as a prop', () => {
+//Unit Test title
+it('Displays the title when passed as a prop', () => {
   const wrapper = shallowMount(Todo, {
     propsData: {
       title: 'My TodoApp'
     }
   })
   expect(wrapper.text()).toMatch('My TodoApp')
+})
+//Test case for todo-input field
+it('allows for adding  todo in list', async () => {
+  const todo_input ="buy some milk"
+  const wrapper = shallowMount(Todo, {
+    propsData: {
+      title: 'My TodoApp'
+    }
+  })
+  expec(wrapper.find('[data-testid="todo-input"]').text()).toContain(todo_input)
 })
 })
 
