@@ -1,7 +1,8 @@
 <template>
   <div>
       <h1>{{title}}</h1>
-      <input type="text" data-testid="todo-input" v-model="Description">
+      <input type="text" data-testid="todo-input" v-model="Description" placeholder="write Description here">
+      <button type="submit" data-testid="todo-btn" >Add Todo</button>        
   </div>
 </template>
 
@@ -16,7 +17,8 @@ export default {
         },
     data(){
         return{
-            Description:''
+            Description:'',
+            todos:''
         }
     }
 }
