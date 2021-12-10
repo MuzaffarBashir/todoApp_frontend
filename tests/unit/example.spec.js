@@ -24,11 +24,7 @@ it('Displays the title when passed as a prop', () => {
 })
 //Test case for todo-input field
 it('allows for adding  todo in todo-input field', async () => {
-  const wrapper = shallowMount(Todo, {
-    propsData: {
-      title: 'My TodoApp'
-    }
-  })
+  const wrapper = shallowMount(Todo)
   await wrapper.find('[data-testid="todo-input"]').setValue('buy some milk')
   expect(wrapper.find('[data-testid="todo-input"]').element.value).toBe('buy some milk')
 })
