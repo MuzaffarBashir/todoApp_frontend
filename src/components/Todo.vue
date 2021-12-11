@@ -3,8 +3,8 @@
       <h1>{{title}}</h1>
       <input type="text" data-testid="todo-input" v-model="Description" placeholder="write Description here">
       <button type="submit" data-testid="todo-btn" @click.prevent="addTodo()">Add Todo</button>
-      <div data-testid="todo">
-        {{todo}}
+      <div data-testid="todos" v-for="todo of todos" :key="todo">
+        {{todo.Description}}
         </div>        
   </div>
 </template>
@@ -21,12 +21,16 @@ export default {
     data(){
         return{
             Description:'',
-            todo:''
+            todos:[{
+                ID:'',
+                Description:''
+            }]
         }
     },
     methods: {
         addTodo(){
-            this.todo =  this.Description
+            this.todos.push(this.Description)
+            this.Description = ''
         }
     },
 }
