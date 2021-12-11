@@ -11,7 +11,7 @@ describe('Todo.vue', () => {
     })
     wrapper.find('[data-testid="todo-input"]').setValue('buy some milk')
     await wrapper.find('[data-testid="todo-btn"]').trigger('click')
-    expect(wrapper.find('[data-testid="todos"]').text()).toBe('buy some milk')
+    expect(wrapper.find('[data-testid="todo"]').text()).toBe('buy some milk')
   })
   //Test case for title
   it('Displays the title when passed as a prop', () => {
