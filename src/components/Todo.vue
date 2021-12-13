@@ -1,7 +1,7 @@
 <template>
   <div>
       <h1>{{title}}</h1>
-      <input type="text" data-testid="todo-input" v-model="Description" placeholder="write Description here">
+      <input type="text" data-testid="todo-input" v-model="Description" placeholder="write Description here" required>
       <button type="submit" data-testid="todo-btn" @click.prevent="addTodo()">Add Todo</button>
       <div data-testid="todos" v-for="todo of todos" :key="todo">
         {{todo.Description}}
@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     name: 'Todo',
      props: {
@@ -28,10 +29,16 @@ export default {
         }
     },
     methods: {
-        addTodo(){
-            this.todos.push(this.Description)
+        addTodo(){        
+
+        if(this.Description !==""){
+            var body ={"Description": this.Description}
+            axios({ method: "POST", url: "http://localhost:8090/handlerequest", data: body,
+            headers: {"content-type": "text/plain" } }).then(result =>
+            this.todos.push(result.data))
             this.Description = ''
         }
+            }
     },
 }
 </script>
