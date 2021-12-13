@@ -10,3 +10,10 @@ export const insertTodo = async () => {
     return []
   }
 }
+export const fetchTodos = async () => {
+  try {
+    return await axios.get(`${fetchTodoUrl}/gettodo`)
+  } catch (e) {
+    return []
+  }
+}

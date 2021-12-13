@@ -99,7 +99,26 @@ describe('Todo.vue', () => {
       expect(axios.post).toHaveBeenCalledWith(`${postTodoUrl}/handlerequest`)
       expect(result.data).toEqual(todo)
     }),
-    //Fail call of API for getting todos list
+      // API success case for getting list of todos uding get API
+      it('should return todos list', async () => {
+        // given
+        const todos = [
+          { ID: '1', Description: 'Test Todo' },
+          { ID: '2', Description: 'New Todo' }
+        ]
+        axios.get = jest.fn().mockResolvedValue({
+          data: [
+            { ID: '1', Description: 'Test Todo' },
+            { ID: '2', Description: 'New Todo' }
+          ]
+        })
+        // when
+        const result = await fetchTodos()
+        // then
+        expect(axios.get).toHaveBeenCalledWith(`${fetchTodoUrl}/gettodo`)
+        expect(result.data).toEqual(todos)
+      })	
+        //Fail call of API for getting todos list
     it('should return empty todo list', async () => {
       const message = 'Network Error'
       axios.get.mockRejectedValueOnce(new Error(message))
@@ -110,7 +129,6 @@ describe('Todo.vue', () => {
       expect(axios.get).toHaveBeenCalledWith(`${fetchTodoUrl}/gettodo`)
       expect(result).toEqual([])
     })
-	
   })
 
 

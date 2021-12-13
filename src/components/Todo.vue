@@ -37,7 +37,7 @@ export default {
        async listAllData(){
            let response;
            try {
-              response = await axios.get('http://localhost:8090/gettodo');  
+              response = await axios.get('http://localhost:8090/gettodo')
               this.todos = response.data 
            } catch (error) {
                console.log('exception ...',error)
