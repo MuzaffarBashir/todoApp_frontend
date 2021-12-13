@@ -98,6 +98,17 @@ describe('Todo.vue', () => {
       // then
       expect(axios.post).toHaveBeenCalledWith(`${postTodoUrl}/handlerequest`)
       expect(result.data).toEqual(todo)
+    }),
+    //Fail call of API for getting todos list
+    it('should return empty todo list', async () => {
+      const message = 'Network Error'
+      axios.get.mockRejectedValueOnce(new Error(message))
+  
+      const result = await fetchTodos()
+  
+      // then
+      expect(axios.get).toHaveBeenCalledWith(`${fetchTodoUrl}/gettodo`)
+      expect(result).toEqual([])
     })
 	
   })
