@@ -96,7 +96,7 @@ describe('Todo.vue', () => {
       // when
       const result = await insertTodo()
       // then
-      expect(axios.post).toHaveBeenCalledWith(`${postTodoUrl}/handlehandlerequest`)
+      expect(axios.post).toHaveBeenCalledWith(`${postTodoUrl}/handlerequest`)
       expect(result.data).toEqual(todo)
     })
 	
