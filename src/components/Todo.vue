@@ -11,6 +11,7 @@
 
 <script>
 import axios from 'axios'
+
 export default {
     name: 'Todo',
      props: {
@@ -28,17 +29,22 @@ export default {
             }]
         }
     },
+    
     methods: {
-        addTodo(){        
+        async addTodo(){        
 
         if(this.Description !==""){
             var body ={"Description": this.Description}
-            axios({ method: "POST", url: "http://localhost:8090/handlerequest", data: body,
-            headers: {"content-type": "text/plain" } }).then(result =>
-            this.todos.push(result.data))
-            this.Description = ''
+            try{
+                const result =  await axios({ method: "POST", url: "http://localhost:8090/handlerequest", body,
+                headers: {"content-type": "text/plain" } })
+                console.log(result)
+                 this.todos.push(result.data)
+            } catch(e){
+                    console.log('error',e)
+                    }            
         }
-            }
+        }
     },
 }
 </script>
