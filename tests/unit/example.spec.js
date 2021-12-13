@@ -82,6 +82,23 @@ describe('Todo.vue', () => {
       expect(axios.post).toHaveBeenCalledWith(`${postTodoUrl}/handlerequest`)
       expect(result).toEqual([])
     })
+    //Succesfully call api
+    it('should return todo ', async () => {
+      // given
+      const todo = [
+        { ID: '1', Description: 'Test Todo' }
+      ]
+      axios.post = jest.fn().mockResolvedValue({
+        data: [
+          { ID: '1', Description: 'Test Todo' }
+        ]
+      })
+      // when
+      const result = await insertTodo()
+      // then
+      expect(axios.post).toHaveBeenCalledWith(`${postTodoUrl}/handlehandlerequest`)
+      expect(result.data).toEqual(todo)
+    })
 	
   })
 
