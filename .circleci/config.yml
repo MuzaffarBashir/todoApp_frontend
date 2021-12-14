@@ -1,0 +1,19 @@
+jobs:
+  build:
+    working_directory: ~/app
+    docker:
+      - image: circleci/node:16.13.1
+    steps:
+      - checkout
+      - restore_cache:
+          key: npm-cache-v1-{{ checksum "package.json" }}
+      - run:
+          name: Install Dependencies
+          command: npm install
+      - save_cache:
+          key: npm-cache-v1-{{ checksum "package.json" }}
+          paths:
+            - /home/circleci/.npm
+      - run:
+          name: Run Tests
+          command: npm run test:unit
