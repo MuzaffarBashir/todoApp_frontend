@@ -44,7 +44,6 @@ export default {
               response = await axios.get('http://localhost:8090/gettodo')
               this.todos = response.data 
            } catch (error) {
-               console.log('exception ...',error)
            }             
                             
         },
@@ -55,10 +54,8 @@ export default {
             try{
                 const result =  await axios({ method: "POST", url: "http://localhost:8090/handlerequest", body,
                 headers: {"content-type": "text/plain" } })
-                console.log(result)
                  this.todos.push(result.data)
             } catch(e){
-                    console.log('error',e)
                     }            
         }
         }
